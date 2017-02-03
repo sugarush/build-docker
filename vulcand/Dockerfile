@@ -1,6 +1,6 @@
 FROM alpine:3.5
 
-ENV PATH="/usr/local/bin"
+ENV INSTALL_PATH="/usr/local/bin"
 
 ENV GOPATH="/go"
 RUN mkdir ${GOPATH}
@@ -24,9 +24,11 @@ RUN apk update && \
     go get ${BUILD_LIB} && \
     rm /go/bin/* && \
     make install && \
-    cp -a /go/bin/* ${PATH} && \
+    cp -a /go/bin/* ${INSTALL_PATH} && \
     rm -rf /go && \
     rm -rf /build && \
     apk del --purge ${PKG_TMP} && \
     rm -rf /var/cache/apk/* && \
-    rm ${PATH}/vbundle
+    rm ${INSTALL_PATH}/vbundle
+
+ENV PATH=${INSTALL_PATH}

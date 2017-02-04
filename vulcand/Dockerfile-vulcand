@@ -15,7 +15,7 @@ ENV BUILD_URL="https://${BUILD_LIB}.git" \
 ENV GOPATH="/go"
 
 # running all these steps together builds a smaller image
-RUN mkdir -p ${GOPATH}
+RUN mkdir -p ${GOPATH} && \
     apk update && \
     apk add ${PKG} && \
     apk add ${PKG_TMP} && \

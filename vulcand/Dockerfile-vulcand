@@ -3,7 +3,7 @@ FROM alpine:3.5
 ENV INSTALL_PATH="/usr/local/bin"
 
 ENV PKG="ca-certificates" \
-    PKG_TMP="g++ git go godep make"
+    PKG_TMP="g++ git go godep make" \
     PKG_CACHE="/var/cache/apk"
 
 ENV BUILD_LIB="github.com/mailgun/vulcand"
@@ -32,6 +32,5 @@ RUN mkdir -p ${GOPATH}
     rm -rf ${PKG_CACHE}/* && \
     rm ${INSTALL_PATH}/vbundle && \
     rm ${INSTALL_PATH}/vctl
-
 
 ENV PATH=${INSTALL_PATH}

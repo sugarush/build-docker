@@ -9,8 +9,7 @@ ENV PKG="ca-certificates" \
 ENV BUILD_LIB="github.com/cayleygraph/cayley"
 
 ENV BUILD_URL="https://${BUILD_LIB}.git" \
-    BUILD_TAG="master" \
-    BUILD_DIR="/build"
+    BUILD_TAG="master"
 
 ENV GOPATH="/go"
 
@@ -19,16 +18,12 @@ RUN mkdir -p ${GOPATH} && \
     apk update && \
     apk add ${PKG} && \
     apk add ${PKG_TMP} && \
-    git clone ${BUILD_URL} ${BUILD_DIR} && \
-    git -C ${BUILD_DIR} checkout ${BUILD_TAG} && \
-    cd ${BUILD_DIR} && \
-    go get ${BUILD_LIB} && \
+    cd ${GOPATH}/bin/${BUILD_LIB} && \
+    git checkout ${BUILD_TAG} && \
     glide install && \
-#    rm ${GOPATH}/bin/* && \
     go install -v ./cmd/cayley && \
     cp -a ${GOPATH}/bin/* ${INSTALL_PATH} && \
     rm -rf ${GOPATH} && \
-    rm -rf ${BUILD_DIR} && \
     apk del --purge ${PKG_TMP} && \
     rm -rf ${PKG_CACHE}/*
 

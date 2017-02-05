@@ -22,7 +22,7 @@ RUN mkdir -p ${GOPATH} && \
     git clone ${BUILD_URL} ${BUILD_DIR} && \
     git -C ${BUILD_DIR} checkout ${BUILD_TAG} && \
     cd ${BUILD_DIR} && \
-#    go get ${BUILD_LIB} && \
+    go get ${BUILD_LIB} && \
     glide install && \
     rm ${GOPATH}/bin/* && \
     go install -v ./cmd/cayley && \

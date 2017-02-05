@@ -17,7 +17,7 @@ RUN mkdir -p ${GOPATH} && \
     apk add ${PKG} && \
     apk add ${PKG_TMP} && \
     go get ${BUILD_LIB} && \
-    cd ${GOPATH}/bin/${BUILD_LIB} && \
+    cd ${GOPATH}/src/${BUILD_LIB} && \
     git checkout ${BUILD_TAG} && \
     glide install && \
     go install -v ./cmd/cayley && \

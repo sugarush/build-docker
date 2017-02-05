@@ -24,7 +24,7 @@ RUN mkdir -p ${GOPATH} && \
     cd ${BUILD_DIR} && \
     go get ${BUILD_LIB} && \
     glide install && \
-    rm ${GOPATH}/bin/* && \
+#    rm ${GOPATH}/bin/* && \
     go install -v ./cmd/cayley && \
     cp -a ${GOPATH}/bin/* ${INSTALL_PATH} && \
     rm -rf ${GOPATH} && \

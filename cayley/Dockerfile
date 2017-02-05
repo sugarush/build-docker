@@ -6,9 +6,7 @@ ENV PKG="ca-certificates" \
     PKG_TMP="g++ git go glide make" \
     PKG_CACHE="/var/cache/apk"
 
-ENV BUILD_LIB="github.com/cayleygraph/cayley"
-
-ENV BUILD_URL="https://${BUILD_LIB}.git" \
+ENV BUILD_LIB="github.com/cayleygraph/cayley" \
     BUILD_TAG="master"
 
 ENV GOPATH="/go"
@@ -18,6 +16,7 @@ RUN mkdir -p ${GOPATH} && \
     apk update && \
     apk add ${PKG} && \
     apk add ${PKG_TMP} && \
+    go get ${BUILD_LIB} && \
     cd ${GOPATH}/bin/${BUILD_LIB} && \
     git checkout ${BUILD_TAG} && \
     glide install && \

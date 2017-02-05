@@ -23,6 +23,7 @@ RUN mkdir -p ${GOPATH} && \
     go install -v ./cmd/cayley && \
     cp -a ${GOPATH}/bin/* ${INSTALL_PATH} && \
     rm -rf ${GOPATH} && \
+    rm -rf /root/.glide && \
     apk del --purge ${PKG_TMP} && \
     rm -rf ${PKG_CACHE}/*
 

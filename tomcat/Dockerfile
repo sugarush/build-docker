@@ -23,5 +23,5 @@ RUN apk update && \
     apk del --purge ${PKG_TMP} && \
     rm -rf ${PKG_CACHE}/*
 
-ENTRYPOINT [ "${CATALINA_HOME}/bin/catalina.sh" ]
+ENTRYPOINT [ "/srv/tomcat/bin/catalina.sh" ]
 CMD [ "run" ]

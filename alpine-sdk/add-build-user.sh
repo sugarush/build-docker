@@ -22,5 +22,7 @@ fi
 #  Set ${HOME} local variable
 local HOME="$(getent passwd ${USER} | cut -d ':' -f '6')"
 
-#  Create blank .zshrc
-touch "${HOME}/.zshrc"
+#  Create .zshrc
+cat <<EOF > "${HOME}/.zshrc"
+alias apk="sudo apk"
+EOF

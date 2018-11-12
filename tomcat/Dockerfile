@@ -1,6 +1,6 @@
 FROM alpine:3.5
 
-ENV PKG="ca-certificates openjdk8" \
+ENV PKG="ca-certificates git openjdk8" \
     PKG_TMP="curl" \
     PKG_CACHE="/var/cache/apk"
 

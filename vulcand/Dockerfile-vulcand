@@ -34,3 +34,5 @@ RUN mkdir -p ${GOPATH} && \
     rm ${INSTALL_PATH}/vctl
 
 ENV PATH=${INSTALL_PATH}
+
+ENTRYPOINT [ "/usr/local/bin/vulcand" ]
